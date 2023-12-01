@@ -1,0 +1,25 @@
+package main
+
+import (
+	"fmt"
+	"github.com/ghjm/advent2023/pkg/utils"
+	"os"
+)
+
+func run() error {
+	err := utils.OpenAndReadLines("input1.txt", func(s string) error {
+		return nil
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func main() {
+	err := run()
+	if err != nil {
+		fmt.Printf("Error: %s\n", err)
+		os.Exit(1)
+	}
+}
