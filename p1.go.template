@@ -8,6 +8,7 @@ import (
 
 func run() error {
 	err := utils.OpenAndReadLines("input1.txt", func(s string) error {
+		fmt.Printf("%s\n")
 		return nil
 	})
 	if err != nil {
