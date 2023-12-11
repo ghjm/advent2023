@@ -6,14 +6,20 @@ import (
 	"os"
 )
 
+type data struct {
+	lines []string
+}
+
 func run() error {
+	d := data{}
 	err := utils.OpenAndReadLines("input1.txt", func(s string) error {
-		fmt.Printf("%s\n", s)
+		d.lines = append(d.lines, s)
 		return nil
 	})
 	if err != nil {
 		return err
 	}
+	fmt.Printf("%#v\n", d)
 	return nil
 }
 
