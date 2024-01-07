@@ -9,7 +9,9 @@ import (
 )
 
 type data struct {
-	components map[string]component
+	components      map[string]component
+	semiFinalDest   string
+	buttonPushCount int64
 }
 
 type pulse struct {
@@ -102,7 +104,12 @@ func (c *conjunction) Reset() {
 	}
 }
 
-func (d *data) pushButton() (int, int, bool) {
+func (d *data) reset() {
+	d.buttonPushCount = 0
+}
+
+func (d *data) pushButton(callback func(id string) bool) (int, int) {
+	d.buttonPushCount++
 	pending := []pulse{{
 		from: "button",
 		dest: "broadcaster",
@@ -110,7 +117,6 @@ func (d *data) pushButton() (int, int, bool) {
 	}}
 	lowPulses := 0
 	highPulses := 0
-	rxLowPulse := false
 	for len(pending) > 0 {
 		curPulse := pending[0]
 		pending = pending[1:]
@@ -119,15 +125,17 @@ func (d *data) pushButton() (int, int, bool) {
 		} else {
 			lowPulses++
 		}
-		if !curPulse.high && curPulse.dest == "rx" {
-			rxLowPulse = true
+		if callback != nil && curPulse.high && curPulse.dest == d.semiFinalDest {
+			if !callback(curPulse.from) {
+				return -1, -1
+			}
 		}
 		comp, ok := d.components[curPulse.dest]
 		if ok {
 			pending = append(pending, comp.RecvPulse(curPulse.from, curPulse.high)...)
 		}
 	}
-	return lowPulses, highPulses, rxLowPulse
+	return lowPulses, highPulses
 }
 
 func run() error {
@@ -169,6 +177,12 @@ func run() error {
 		return err
 	}
 	for cn, cv := range d.components {
+		for _, n := range cv.Neighbors() {
+			if n == "rx" {
+				d.semiFinalDest = cn
+				break
+			}
+		}
 		cc, ok := cv.(*conjunction)
 		if ok {
 			for nn, nv := range d.components {
@@ -181,25 +195,46 @@ func run() error {
 			}
 		}
 	}
+	d.reset()
+	for _, c := range d.components {
+		c.Reset()
+	}
 	var lowPulses, highPulses int
 	for i := 0; i < 1000; i++ {
-		lp, hp, _ := d.pushButton()
+		lp, hp := d.pushButton(nil)
 		lowPulses += lp
 		highPulses += hp
 	}
 	fmt.Printf("Part 1: %d\n", lowPulses*highPulses)
-	for _, c := range d.components {
+	var rxFeeders []string
+	d.reset()
+	for cid, c := range d.components {
 		c.Reset()
+		for _, n := range c.Neighbors() {
+			if n == d.semiFinalDest {
+				rxFeeders = append(rxFeeders, cid)
+				break
+			}
+		}
 	}
-	i := 0
+	periods := make(map[string]int64)
 	for {
-		i++
-		_, _, rxLowPulse := d.pushButton()
-		if rxLowPulse {
+		lp, _ := d.pushButton(func(id string) bool {
+			periods[id] = d.buttonPushCount
+			if len(periods) == len(rxFeeders) {
+				return false
+			}
+			return true
+		})
+		if lp == -1 {
 			break
 		}
 	}
-	fmt.Printf("Part 2: %d\n", i)
+	var kpArr []int64
+	for _, p := range periods {
+		kpArr = append(kpArr, p)
+	}
+	fmt.Printf("Part 2: %d\n", utils.LCM(kpArr...))
 	return nil
 }
 
