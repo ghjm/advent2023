@@ -4,6 +4,8 @@ github.com/ghjm/advent_utils v0.0.0-20241208075412-9a903fd47f8c h1:Ju2+xth6i/7Ro
 github.com/ghjm/advent_utils v0.0.0-20241208075412-9a903fd47f8c/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
 github.com/ghjm/advent_utils v0.0.0-20241208092936-68b0b0415644 h1:lbCrEiWs0OiPM4aflVzk2ZvpRoSdj+idTARoEMa+DxE=
 github.com/ghjm/advent_utils v0.0.0-20241208092936-68b0b0415644/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
+github.com/ghjm/advent_utils v0.0.0-20241208133401-638eb40b15e5 h1:SwG/idNfURPm0ygdxeOD5tZsEttvP+Tfz7T/xaZhYpY=
+github.com/ghjm/advent_utils v0.0.0-20241208133401-638eb40b15e5/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
 github.com/oleiade/lane/v2 v2.0.0 h1:XW/ex/Inr+bPkLd3O240xrFOhUkTd4Wy176+Gv0E3Qw=
 github.com/oleiade/lane/v2 v2.0.0/go.mod h1:i5FBPFAYSWCgLh58UkUGCChjcCzef/MI7PlQm2TKCeg=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
