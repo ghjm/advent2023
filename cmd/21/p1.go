@@ -2,82 +2,88 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"strings"
-
 	utils "github.com/ghjm/advent_utils"
+	"os"
 )
 
 type data struct {
-	lines    []string
-	startPos point
+	board    *utils.StdBoard
+	startPos utils.StdPoint
 }
 
-type point struct {
-	x, y int
-}
-
-type state struct {
-	pos   point
-	steps int
-}
-
-func (d *data) legalMovesFrom(p point) []point {
-	var results []point
-	for _, dir := range []point{{-1, 0}, {1, 0}, {0, 1}, {0, -1}} {
-		np := point{p.x + dir.x, p.y + dir.y}
-		if np.x >= 0 && np.y >= 0 && np.x < len(d.lines[0]) && np.y < len(d.lines) &&
-			(d.lines[np.y][np.x] == '.' || d.lines[np.y][np.x] == 'S') {
-			results = append(results, np)
+func (d *data) legalMovesFrom(p utils.StdPoint) []utils.StdPoint {
+	var results []utils.StdPoint
+	for _, dir := range []utils.StdPoint{{-1, 0}, {1, 0}, {0, 1}, {0, -1}} {
+		np := p.Add(dir)
+		if d.board.Contains(np) {
+			v := d.board.Get(np)
+			if v == '.' || v == 'S' {
+				results = append(results, np)
+			}
 		}
 	}
 	return results
 }
 
 func run() error {
-	d := data{}
-	err := utils.OpenAndReadLines("input21.txt", func(s string) error {
-		d.lines = append(d.lines, s)
-		idx := strings.Index(s, "S")
-		if idx >= 0 {
-			d.startPos = point{idx, len(d.lines) - 1}
-		}
-		return nil
-	})
-	if err != nil {
-		return err
+	d := data{
+		board: utils.NewStdBoard(),
 	}
-	open := []state{state{d.startPos, 0}}
-	visited := make(map[state]struct{})
-	solutions := make(map[point]struct{})
-	lmf := make(map[point][]point)
-	max := 0
+	d.board.MustFromFile("input21.txt")
+	d.board.Iterate(func(p utils.StdPoint, v rune) bool {
+		if v == 'S' {
+			d.startPos = p
+			return false
+		}
+		return true
+	})
+	open := []utils.PointPlusData[int, int]{{d.startPos, 0}}
+	visited := make(map[utils.StdPoint]int)
 	for len(open) > 0 {
 		s := open[0]
 		open = open[1:]
-		if s.steps > max {
-			max = s.steps
-			fmt.Printf("New max: %d, len(open)=%d, len(visited)=%d\n", max, len(open), len(visited))
-		}
-		if s.steps == 64 {
-			solutions[s.pos] = struct{}{}
+		_, ok := visited[s.Point]
+		if ok {
 			continue
 		}
-		nps, ok := lmf[s.pos]
-		if !ok {
-			nps = d.legalMovesFrom(s.pos)
-			lmf[s.pos] = nps
-		}
-		for _, np := range nps {
-			ns := state{np, s.steps + 1}
-			_, ok := visited[ns]
+		visited[s.Point] = s.Data
+		for _, m := range d.legalMovesFrom(s.Point) {
+			_, ok := visited[m]
 			if !ok {
-				open = append(open, ns)
+				open = append(open, utils.PointPlusData[int, int]{Point: m, Data: s.Data + 1})
 			}
-			visited[ns] = struct{}{}
 		}
 	}
-	fmt.Printf("%d\n", len(solutions))
+	var p1 int
+	for _, v := range visited {
+		if v <= 64 && v%2 == 0 {
+			p1++
+		}
+	}
+	fmt.Printf("Part 1: %d\n", p1)
+
+	p2Steps := uint64(26501365)
+	w := uint64(d.board.Bounds().Width())
+	n := (p2Steps - (w / 2)) / w
+	even := n * n
+	odd := (n + 1) * (n + 1)
+	var oddLocs, evenLocs, oddCorners, evenCorners uint64
+	for _, v := range visited {
+		if v%2 == 0 {
+			evenLocs++
+		} else {
+			oddLocs++
+		}
+		if v > 65 {
+			if v%2 == 0 {
+				evenCorners++
+			} else {
+				oddCorners++
+			}
+		}
+	}
+	p2 := odd*oddLocs + even*evenLocs - (n+1)*oddCorners + n*evenCorners
+	fmt.Printf("Part 2: %d\n", p2)
 	return nil
 }
 
