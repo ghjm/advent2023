@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/ghjm/advent2023/pkg/utils"
 	"math"
 	"os"
 	"regexp"
 	"strings"
+
+	utils "github.com/ghjm/advent_utils"
 )
 
 type almanacEntry struct {

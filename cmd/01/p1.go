@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/ghjm/advent2023/pkg/utils"
 	"os"
 	"unicode"
+
+	utils "github.com/ghjm/advent_utils"
 )
 
 func setFirstLast(first *int, last *int, value int) {

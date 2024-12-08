@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/ghjm/advent2023/pkg/utils"
-	"github.com/oleiade/lane/v2"
 	"math"
 	"os"
+
+	utils "github.com/ghjm/advent_utils"
+	"github.com/oleiade/lane/v2"
 )
 
 type data struct {

@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/ghjm/advent2023/pkg/utils"
 	"os"
 	"regexp"
+
+	utils "github.com/ghjm/advent_utils"
 )
 
 type instruction struct {

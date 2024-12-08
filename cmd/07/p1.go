@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/ghjm/advent2023/pkg/utils"
 	"os"
 	"sort"
 	"strings"
+
+	utils "github.com/ghjm/advent_utils"
 )
 
 type hand struct {

@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/ghjm/advent2023/pkg/utils"
 	"os"
 	"strconv"
 	"unicode"
+
+	utils "github.com/ghjm/advent_utils"
 )
 
 type grid [][]rune
