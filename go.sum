@@ -1,11 +1,9 @@
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/ghjm/advent_utils v0.0.0-20241208075412-9a903fd47f8c h1:Ju2+xth6i/7RohJnCDogIblDddMGOXpj7d/3wjUOZ/Y=
-github.com/ghjm/advent_utils v0.0.0-20241208075412-9a903fd47f8c/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
-github.com/ghjm/advent_utils v0.0.0-20241208092936-68b0b0415644 h1:lbCrEiWs0OiPM4aflVzk2ZvpRoSdj+idTARoEMa+DxE=
-github.com/ghjm/advent_utils v0.0.0-20241208092936-68b0b0415644/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
-github.com/ghjm/advent_utils v0.0.0-20241208133401-638eb40b15e5 h1:SwG/idNfURPm0ygdxeOD5tZsEttvP+Tfz7T/xaZhYpY=
-github.com/ghjm/advent_utils v0.0.0-20241208133401-638eb40b15e5/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
+github.com/ghjm/advent_utils v0.0.0-20241208233746-314b1fcc4487 h1:4+nwdJ/Cc2K3yyjs41n5JwFNat5qA9UNXqDFAidRmQU=
+github.com/ghjm/advent_utils v0.0.0-20241208233746-314b1fcc4487/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
+github.com/ghjm/advent_utils v0.0.0-20241209002601-bf0ab097be5e h1:8aOdTXCqv156P9PmlHj2+gkjPAitzIJidZ42tYTjePw=
+github.com/ghjm/advent_utils v0.0.0-20241209002601-bf0ab097be5e/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
 github.com/oleiade/lane/v2 v2.0.0 h1:XW/ex/Inr+bPkLd3O240xrFOhUkTd4Wy176+Gv0E3Qw=
 github.com/oleiade/lane/v2 v2.0.0/go.mod h1:i5FBPFAYSWCgLh58UkUGCChjcCzef/MI7PlQm2TKCeg=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
