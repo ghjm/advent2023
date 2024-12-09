@@ -27,7 +27,7 @@ func (d *data) legalMovesFrom(p utils.StdPoint) []utils.StdPoint {
 
 func run() error {
 	d := data{
-		board: utils.NewStdBoard(),
+		board: utils.NewStdBoard(&utils.FlatBoard{}),
 	}
 	d.board.MustFromFile("input21.txt")
 	d.board.Iterate(func(p utils.StdPoint, v rune) bool {
