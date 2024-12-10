@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 	utils "github.com/ghjm/advent_utils"
+	"github.com/ghjm/advent_utils/board"
 	"os"
 	"time"
 )
 
 type data struct {
-	board      *utils.StdBoard
-	tmpBoard   *utils.StdBoard
+	board      *board.StdBoard
+	tmpBoard   *board.StdBoard
 	startPoint utils.StdPoint
 	endPoint   utils.StdPoint
 }
@@ -81,7 +82,7 @@ func (d *data) search(start utils.StdPoint, legalMoves func(utils.StdPoint) []ut
 
 func run() error {
 	d := data{
-		board: utils.NewStdBoard(&utils.FlatBoard{}),
+		board: board.NewStdBoard(board.WithStorage(&board.FlatBoard{})),
 	}
 	err := d.board.FromFile("input23.txt")
 	if err != nil {

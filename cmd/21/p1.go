@@ -3,11 +3,12 @@ package main
 import (
 	"fmt"
 	utils "github.com/ghjm/advent_utils"
+	"github.com/ghjm/advent_utils/board"
 	"os"
 )
 
 type data struct {
-	board    *utils.StdBoard
+	board    *board.StdBoard
 	startPos utils.StdPoint
 }
 
@@ -27,7 +28,7 @@ func (d *data) legalMovesFrom(p utils.StdPoint) []utils.StdPoint {
 
 func run() error {
 	d := data{
-		board: utils.NewStdBoard(&utils.FlatBoard{}),
+		board: board.NewStdBoard(board.WithStorage(&board.FlatBoard{})),
 	}
 	d.board.MustFromFile("input21.txt")
 	d.board.Iterate(func(p utils.StdPoint, v rune) bool {
