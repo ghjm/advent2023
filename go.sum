@@ -4,6 +4,12 @@ github.com/ghjm/advent_utils v0.0.0-20241208233746-314b1fcc4487 h1:4+nwdJ/Cc2K3y
 github.com/ghjm/advent_utils v0.0.0-20241208233746-314b1fcc4487/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
 github.com/ghjm/advent_utils v0.0.0-20241209002601-bf0ab097be5e h1:8aOdTXCqv156P9PmlHj2+gkjPAitzIJidZ42tYTjePw=
 github.com/ghjm/advent_utils v0.0.0-20241209002601-bf0ab097be5e/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
+github.com/ghjm/advent_utils v0.0.0-20241210025127-9f719f5c4797 h1:xQRP31o4B7r5KhD/z8oI70zGAkNAJXtMED+oFPzqB6I=
+github.com/ghjm/advent_utils v0.0.0-20241210025127-9f719f5c4797/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
+github.com/ghjm/advent_utils v0.0.0-20241210025336-bd4d9e92bd32 h1:9Pxxnkua+vFPPb4x5dlviLZpP0uGzmRYPUx9QMhgEpc=
+github.com/ghjm/advent_utils v0.0.0-20241210025336-bd4d9e92bd32/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
+github.com/ghjm/advent_utils v0.0.0-20241210031825-a5bfff95f730 h1:Mgn1jSCMz+lxZx2myhoJqU+kcPwueOVgMjjDEpisDR0=
+github.com/ghjm/advent_utils v0.0.0-20241210031825-a5bfff95f730/go.mod h1:gQTdVT3BO/oqRj+csN1BbdZIJFzj0qokLleRrPOuBp0=
 github.com/oleiade/lane/v2 v2.0.0 h1:XW/ex/Inr+bPkLd3O240xrFOhUkTd4Wy176+Gv0E3Qw=
 github.com/oleiade/lane/v2 v2.0.0/go.mod h1:i5FBPFAYSWCgLh58UkUGCChjcCzef/MI7PlQm2TKCeg=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=

@@ -3,7 +3,7 @@ module github.com/ghjm/advent2023
 go 1.23.3
 
 require (
-	github.com/ghjm/advent_utils v0.0.0-20241209002601-bf0ab097be5e
+	github.com/ghjm/advent_utils v0.0.0-20241210031825-a5bfff95f730
 	github.com/oleiade/lane/v2 v2.0.0
 )
 
